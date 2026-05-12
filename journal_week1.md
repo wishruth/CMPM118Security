@@ -10,4 +10,6 @@ The first week consisted of just an introduction to how the class is setup and i
 ## Things I Learned: 
 
 * The importance of Environment setup and getting the correct tools necessary before working, like setting up the Rust plugins on my VSCode that allow me to work more effectively. 
+
+To just have a kind of reflection at the end of 
  
