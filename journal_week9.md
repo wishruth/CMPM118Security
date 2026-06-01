@@ -1,0 +1,11 @@
+# Lab Notebook Week 9
+## Vishruth Narasimhan
+
+# Reflection
+Reflecting on this week, I had a conflict and wasn't able to go into lab on thursday so I had to go in on Tuesday instead and was working with Surendra. Got my filesystem project and my multithreaded HTTP server checked off. The process for completing the multithreaded HTTP server wasn't too bad because the rust book basically gave most of the necessary code so there weren't many roadblocks but I did do my best to understand each block of code. Main takeaways I had from completing the multithreaded HTTP server project is that the difference between the single versus multi-threaded version comes from request handling time. All requests in the single are handled one at a time in order, so it takes longer to process all requests versus our multi version with 4 threads to process 4 requests simultaneously, meaning only the 5th request would have to wait in line which improves efficiency and speed significantly. Then I got started with setting up twizzler but ran into a roadblock because my laptop ran out of storage, which I've been meaning to clear up but need to get done before I go into lab this week. I did start the setup process though, got stuck with pulling the toolchain because of the lack of storage space. 
+
+# Parts that took time for review
+The main parts that took some time for review in the multi-threaded project was when I was trying to switch from the single to multi-threaded version. Something I had to review was the difference in inner .unwrap call on recv, which panics when the channel closes. Recv returns result<job, recv error> which returns Err every time the sender is dropped, so when the threadpool::drop runs drop(self.sender.take()), every single thead/worker's recv returns Err and .unwrap on that panics instead of exiting gracefully. So instead of that we run the match message block which lets the join() call in the Drop impl actually complete, which produces the graceful shutdown. 
+
+# Goals for Next Week
+My goals for next week are to clear the space on my laptop, setup twizzler on my laptop, and get started on the intro exercises we need to run on twizzler. 
